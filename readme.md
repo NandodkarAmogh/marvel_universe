@@ -1,0 +1,1 @@
+This CLI based app is build to check how well do you know the marvel universe.
