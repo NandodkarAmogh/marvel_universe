@@ -1,0 +1,75 @@
+var readlineSync = require('readline-sync');
+
+const chalk = require('chalk');
+
+var highscore = 17;
+
+// console.log(chalk.blue('Hello world!'));
+var userName = readlineSync.question('What is your name? '); //to know the name of the user
+console.log(' Welcome ' +userName+ '! Lets play the Marvel Cinematic Universe Quiz');
+if (readlineSync.keyInYN('Continue with the quiz?') === false) {
+  // `N` key was pressed.
+  process.exit();
+}
+var score = 0; //to store score of the user
+function play(question,answer) //function to play the quiz
+{
+  var userAnswer = readlineSync.question(question);
+  if (userAnswer.toUpperCase() === answer.toUpperCase())
+  {
+    console.log(chalk.green.bold("You are right!"));
+    score= score+1;
+  }
+  else{
+    console.log(chalk.red.bold('You are wrong!'))
+  }
+ console.log(chalk.yellow.bold('Your current score is ' +score)); //display the score of user
+ console.log('___________________')
+}
+
+var questions = [{
+  question: "What is the name of Thor’s hammer?" , answer : "Mjolnir" },{
+  question: "What year was the first Iron Man movie released, kicking off the Marvel Cinematic Universe?" , answer : "2008" },{
+  question: "What is Captain America’s shield made of?" , answer : "Vibranium" },{
+  question: "The Flerkens are a race of extremely dangerous aliens that resembles what?" , answer : "Cat" },{
+  question: " Before becoming Vision, what is the name of Iron Man’s A.I. butler? " , answer : "J.A.R.V.I.S." },{
+  question: " Who was the last holder of the Space Stone before Thanos claims it for his Infinity Gauntlet? " , answer : "Loki" },{
+  question: "Who does the Mad Titan sacrifice to acquire the Soul Stone? " , answer : "Gamora" },{
+  question: "What is the name of the little boy Tony befriends while stranded in the Iron Man 3? " , answer : "Harley" },{
+  question: "Who is killed by Loki in the Avengers? " , answer : "Agent Coulson" },{
+  question: "What landmark does Peter Parker rescue his classmates from in Spider-Man: Homecoming? " , answer : "Washington Monument" },{
+  question: "What type of doctor is Stephen Strange? " , answer : "Neurosurgeon" },{
+  question: "What is Deadpool’s real name? " , answer : "Wade Wilson" },{
+  question: "What is the name of the axe that is forged from the heat of a dying neutron star for Thor? " , answer : "Stormbreaker" },{
+  question: "How many Infinity Stones are there? " , answer : "6" },{
+  question: "What is the only Marvel film not to have a post-credit scene? " , answer : "Avengers Endgame" },{
+  question: "What is the name of the microscopic universe Ant-Man travels to when he goes sub-atomic? " , answer : "Quantum Realm" },{
+  question: "Director Taika Waititi also played which comedic Thor: Ragnarok character? " , answer : "korg" },{
+  question: "In which film’s post-credit scene did Thanos first appear? " , answer : "The Avengers" },{
+  question: "In which film do we finally learn the backstory behind how Nick Fury lost his eye? " , answer : "Captain Marvel" },{
+  question: "What is the name of the treaty which divides the Avengers into opposing factions? " , answer : "The Sokovia Accords" },{
+  question: "Which of the infinity stones is hidden on Vormir? " , answer : "Yellowjacket" },{
+  question: "In ‘Doctor Strange’, the Time Stone is revealed to be hidden inside what artifact? " , answer : "Eye of Agamotto" },{
+  question: "Which planet does Peter Quill retrieve the Orb containing the Power Stone? " , answer : "Morag" },{
+  question: "Which of the following superheroes says that “Don’t make me angry; you wouldn’t like me when I’m angry”? " , answer : "Hulk" },{
+  question: "Which superhero says: “With great power, there must also come great responsibility”? " , answer : "Spiderman" },{
+  question: "Which newspaper does Spiderman – Peter Parker – work for? " , answer : "The Daily Bugle" },//{
+  // question: "" , answer : "" },{
+  // question: "" , answer : "" },{
+  // question: "" , answer : "" },{
+  // question: "" , answer : "" },{
+  // question: "" , answer : "" } 
+  ]
+
+  for(i=0; i<questions.length; i++){
+    var currentQuestion = questions[i];
+    play(currentQuestion.question,currentQuestion.answer)
+  }
+
+  console.log('Your final score is ' +score)
+
+if(highscore<score){
+  console.log(chalk.cyanBright.bold('YAYY! You are the new high scorer '))
+}
+
+console.log('Thanks for playing the game')
